@@ -1,8 +1,19 @@
+import { ThemeProvider } from "styled-components"
+import { lightTheme, darkTheme } from "./styles/theme"
+import AppRouter from "./router/AppRouter"
+import { GlobalStyles } from "./styles/Global.styles"
+import { useThemeContext } from "./context/ThemeContext"
+
+
 function App() {
+  const { myTheme } = useThemeContext()
+  const themes = myTheme === "light" ? lightTheme : darkTheme
+
   return (
-    <div className="App">
-      <h1>Hello React</h1>
-    </div>
+    <ThemeProvider theme={themes}>
+      <GlobalStyles />
+      <AppRouter />
+    </ThemeProvider>
   )
 }
 
