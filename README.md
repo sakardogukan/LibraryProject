@@ -7,8 +7,10 @@ It is planned to design a website with React.
 At the end of the project, following topics are to be covered;
 * HTML
 * CSS
-* React
 * Bootstrap
+* React
+* React-Router-Dom
+* Styled-Components
 
 -----
 
