@@ -1,6 +1,6 @@
 // Auth Context
 
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 //! 1- Theme Context oluşturulması:
 const AuthContext = createContext()
@@ -8,8 +8,15 @@ const AuthContext = createContext()
 //! 2- Sarmalayıcı (Provider) Componenet:
 const AuthContextProvider = ({ children }) => {
   // local State
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(
+    sessionStorage.getItem("user") || false
+  )
+  
   const values = { user, setUser }
+
+  useEffect(() => {
+    sessionStorage.setItem("user", user)
+  }, [user])
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
 }
